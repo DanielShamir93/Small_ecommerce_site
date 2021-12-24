@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import shopApis from "../../../api.js";
 import axios from "axios";
@@ -21,6 +21,10 @@ export default function ViewItem() {
         }
     }
 
+    const addToCart = () => {
+        localStorage.setItem(`cart_${id}`, JSON.stringify(item));
+    }
+
     const renderItem = () => {
         return (
             <div>
@@ -30,15 +34,15 @@ export default function ViewItem() {
                     <p>{item.description}</p>
                     <span>{`${item.price}$`}</span>
                 </div>
+                <button onClick={addToCart}>Add To Cart</button>
             </div>
-            
         );
     }
 
     return (
-        <div>
+        <React.Fragment>
             {renderItem()}
-        </div>
+        </React.Fragment>
     );
 
 }

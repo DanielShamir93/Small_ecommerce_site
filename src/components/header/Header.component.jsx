@@ -20,7 +20,9 @@ export default function Header() {
                 </Link>
                 <NavbarButton className="navbar-button categories" term="Categories" reactIcon={<FcList />} />
                 <NavbarButton className="navbar-button sign-in" term="Sign in" reactIcon={<CgProfile />} />
-                <NavbarButton className="navbar-button cart" term="" reactIcon={<FaShoppingCart />} />
+                <Link to="/cart">
+                    <NavbarButton className="navbar-button cart" term="" reactIcon={<FaShoppingCart />} />
+                </Link>
             </div>
         </div>
     );

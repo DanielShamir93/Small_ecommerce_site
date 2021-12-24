@@ -20,17 +20,24 @@ export default function Shop() {
         }
     }
 
+    const addToCart = (item) => {
+        localStorage.setItem(`cart_${item.id}`, JSON.stringify(item));
+    }
+
     const renderShopItems = () => {
         return (
             shopItems.map((item) => {
                 return (
-                    <Link key={item.id} to={`/shop/${item.id}`}>
-                        <img src={item.image} width="200" alt="item-image" />
-                        <div>
-                            <span>{item.title}</span>
-                            <span>{`${item.price}$`}</span>
-                        </div>
-                    </Link>
+                    <div key={item.id}>
+                        <Link to={`/shop/${item.id}`}>
+                            <img src={item.image} width="200" alt="item-image" />
+                            <div>
+                                <span>{item.title}</span>
+                                <span>{`${item.price}$`}</span>
+                            </div>
+                        </Link>
+                        <button onClick={() => {addToCart(item)}}>Add To Cart</button>
+                    </div>
                 );
             })
         );
