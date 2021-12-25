@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { incrementAction } from '../../../store/actions/actions.js';
 import shopApis from "../../../api.js";
 import axios from "axios";
+import './viewItem.styles.scss';
 
 export default function ViewItem() {
 
@@ -34,22 +35,20 @@ export default function ViewItem() {
 
     const renderItem = () => {
         return (
-            <div>
-                <img src={item.image} width="200" alt="item-image" />
-                <div>
-                    <span>{item.title}</span>
-                    <p>{item.description}</p>
-                    <span>{`${item.price}$`}</span>
-                </div>
-                <button onClick={addToCart}>Add To Cart</button>
+            <div className="item">
+                <img className="item-image" src={item.image} alt="item-image" />
+                <h2 className="item-title">{item.title}</h2>
+                <p className="item-description">{item.description}</p>
+                <span className="item-price">{`${item.price}$`}</span>
+                <button className="add-to-cart" onClick={addToCart}>Add To Cart</button>
             </div>
         );
     }
 
     return (
-        <React.Fragment>
+        <div className="item-container">
             {renderItem()}
-        </React.Fragment>
+        </div>
     );
 
 }

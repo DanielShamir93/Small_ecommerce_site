@@ -1,0 +1,25 @@
+.item-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 10vh;
+
+    .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 70vw;
+        align-items: center;
+        text-align: center;
+        font-size: 3vmin;
+        height: 70vh;
+
+        &-image {
+            width: 15vw;
+        }
+
+        .add-to-cart {
+            cursor: pointer;
+        }
+        
+    }
+}
