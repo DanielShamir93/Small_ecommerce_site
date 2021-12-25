@@ -38,7 +38,7 @@ export default function Cart() {
             let item = itemEntries[1];
             return (
                 <div className="item" key={itemId}>
-                    <img src={item.image} width="200" alt="item-image" />
+                    <img className="item-image" src={item.image} alt="item-image" />
                     <div>
                         <span>{item.title}</span>
                         <span>{`${item.price}$`}</span>
@@ -56,7 +56,7 @@ export default function Cart() {
     return (
         <div className="Cart-container">
             <div className="cart">
-                {renderCartItems()}
+                {Object.keys(cartItems).length ? renderCartItems() : <h1>Cart Empty</h1>}
             </div>
         </div>
     );
