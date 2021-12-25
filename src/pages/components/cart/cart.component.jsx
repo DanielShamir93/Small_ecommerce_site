@@ -43,7 +43,7 @@ export default function Cart() {
                         <span>{item.title}</span>
                         <span>{`${item.price}$`}</span>
                     </div>
-                    <button 
+                    <button className="ui button red"
                         onClick={() => {
                             removeFromCart(itemId)
                         }}
@@ -56,7 +56,7 @@ export default function Cart() {
     return (
         <div className="Cart-container">
             <div className="cart">
-                {Object.keys(cartItems).length ? renderCartItems() : <h1>Cart Empty</h1>}
+                {Object.keys(cartItems).length ? renderCartItems() : <h1>Cart Is Empty</h1>}
             </div>
         </div>
     );

@@ -45,7 +45,7 @@ export default function Shop() {
                             </div>
                         </Link>
                         <button 
-                            className="add-to-cart" 
+                            className="add-to-cart ui button green" 
                             onClick={() => { 
                                 addToCart(item);
                             }}

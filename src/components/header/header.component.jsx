@@ -29,19 +29,19 @@ export default function Header() {
     return (
         <div className="Header">
             <div className="left-header">
-                <Link to="/" className="navbar-link">
+                <Link to="/" className="navbar-link" style={{textDecoration: 'none'}}>
                     <NavbarButton className="navbar-button home" term="" reactIcon={<FcHome className="react-icon"/>} />
                 </Link>
             </div>
             <div className="right-header">
-                <Link to="/shop" className="navbar-link">
+                <Link to="/shop" className="navbar-link" style={{textDecoration: 'none'}}>
                     <NavbarButton className="navbar-button shop" term="Shop" reactIcon={<FcShop className="react-icon"/>} />
                 </Link>
-                <Link to={"/categories"} className="navbar-link">
+                <Link to={"/categories"} className="navbar-link" style={{textDecoration: 'none'}}>
                     <NavbarButton className="navbar-button categories" term="Categories" reactIcon={<FcList className="react-icon"/>} />
                 </Link>
                 <NavbarButton className="navbar-button sign-in" term="Sign in" reactIcon={<CgProfile className="react-icon"/>} />
-                <Link to="/cart" className="navbar-link">
+                <Link to="/cart" className="navbar-link" style={{textDecoration: 'none'}}>
                     <span className="cart-counter">{cartState}</span>
                     <NavbarButton className="navbar-button cart" term="" reactIcon={<FaShoppingCart className="react-icon"/>} />
                 </Link>

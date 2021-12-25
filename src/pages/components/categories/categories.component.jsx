@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import shopApis from "../../../api.js";
 import axios from "axios";
+import './categories.styles.scss';
 
 export default function Categories() {
 
@@ -14,7 +15,6 @@ export default function Categories() {
     const getCategories = async () => {
         try{
             const { data } = await axios.get(shopApis.products + 'categories');
-            console.log(data)
             setCategories(data);
         } catch(err) {
             console.log(err);
@@ -25,16 +25,20 @@ export default function Categories() {
         return (
             <div>
                 {categories.map((categoryName) => {
-                    return <Link to={categoryName}>{categoryName}</Link>
+                    return (
+                        <Link key={categoryName} to={categoryName}>
+                            <span className="category-name ui button">{categoryName}</span>
+                        </Link>
+                    );
                 })}
             </div>
         );
     }
 
     return (
-        <React.Fragment>
+        <div className="categories">
             {renderCategories()}
-        </React.Fragment>
+        </div>
     );
 
 }
