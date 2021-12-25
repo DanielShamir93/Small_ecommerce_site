@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import shopApis from "../../../api.js";
 import axios from "axios";
+import { useDispatch } from 'react-redux';
+import { incrementAction } from '../../../store/actions/actions.js';
+import "./shop.styles.scss";
 
 export default function Shop() {
 
     const [shopItems, setShopItems] = useState([]);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         getShopItems();
@@ -21,22 +25,33 @@ export default function Shop() {
     }
 
     const addToCart = (item) => {
-        localStorage.setItem(`cart_${item.id}`, JSON.stringify(item));
+        if (!localStorage.getItem(`cart_${item.id}`)) {
+            // Item is not in localStorage
+            localStorage.setItem(`cart_${item.id}`, JSON.stringify(item));
+            dispatch(incrementAction(1));
+        }
     }
 
     const renderShopItems = () => {
         return (
             shopItems.map((item) => {
                 return (
-                    <div key={item.id}>
-                        <Link to={`/shop/${item.id}`}>
-                            <img src={item.image} width="200" alt="item-image" />
-                            <div>
-                                <span>{item.title}</span>
-                                <span>{`${item.price}$`}</span>
+                    <div className="item" key={item.id}>
+                        <Link className="item-content" to={`/shop/${item.id}`}>
+                            <figure className="item-image" style={{backgroundImage: `url(${item.image})`}} ></figure>
+                            <div className="item-details">
+                                <span className="item-title">{item.title}</span>
+                                <span className="item-price">{`${item.price}$`}</span>
                             </div>
                         </Link>
-                        <button onClick={() => {addToCart(item)}}>Add To Cart</button>
+                        <button 
+                            className="add-to-cart" 
+                            onClick={() => { 
+                                addToCart(item);
+                            }}
+                        >
+                            Add To Cart
+                        </button>
                     </div>
                 );
             })
@@ -44,9 +59,12 @@ export default function Shop() {
     }
 
     return (
-        <div>
-            {renderShopItems()}
+        <div className="shop">
+            <div className="items-container">
+                {renderShopItems()}
+            </div>
         </div>
+        
     );
 
 }

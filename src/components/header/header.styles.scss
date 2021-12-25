@@ -1,0 +1,38 @@
+.Header {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 2vmin black;
+    padding: 2vmin;
+    border-radius: 0 0 2vmin 2vmin;
+
+    .left-header {
+
+        .react-icon {
+            font-size: 5vmin;
+            text-decoration: none;
+        }
+
+    }
+
+    .right-header {
+        display: flex;
+
+        .navbar-link {
+            padding: 0 3vmin;
+            position: relative;
+
+            .cart-counter {
+                position: absolute;
+                bottom: 5vmin;
+                left: 5.5vmin;
+                font-size: 2vmin;
+            }
+        }
+
+        .react-icon {
+            font-size: 5vmin;
+            text-decoration: none;
+            color: rgba(0, 0, 0, 0.8);
+        }
+    }
+}

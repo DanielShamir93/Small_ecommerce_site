@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { incrementAction } from '../../../store/actions/actions.js';
 import shopApis from "../../../api.js";
 import axios from "axios";
 
@@ -7,6 +9,7 @@ export default function ViewItem() {
 
     const [item, setItem] = useState('');
     const { id } = useParams();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         getItem();
@@ -22,7 +25,11 @@ export default function ViewItem() {
     }
 
     const addToCart = () => {
-        localStorage.setItem(`cart_${id}`, JSON.stringify(item));
+        if (!localStorage.getItem(`cart_${item.id}`)) {
+            // Item is not in localStorage
+            localStorage.setItem(`cart_${item.id}`, JSON.stringify(item));
+            dispatch(incrementAction(1));
+        }
     }
 
     const renderItem = () => {

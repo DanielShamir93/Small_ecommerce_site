@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { decrementAction } from '../../../store/actions/actions.js';
 
 export default function Cart() {
 
     const [cartItems, setCartItems] = useState({});
-    const [removedItemId, setRemovedItemId] = useState(0);
+    const [removedItem, setRemovedItem] = useState(0);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         let cart = {};
@@ -13,15 +16,19 @@ export default function Cart() {
             }
         }
         setCartItems(cart);
-    }, [removedItemId])
+    }, [removedItem])
 
 
     const removeFromCart = (id) => {
         const cart = cartItems;
-        delete cart[id];
-        setCartItems(cart);
-        localStorage.removeItem(id);
-        setRemovedItemId(id);
+        
+        if(cart.hasOwnProperty(id)) {
+            delete cart[id];
+            setCartItems(cart);
+            localStorage.removeItem(id);
+            dispatch(decrementAction(1));
+            setRemovedItem(id);
+        }
     }
 
     const renderCartItems = () => {
@@ -35,7 +42,11 @@ export default function Cart() {
                         <span>{item.title}</span>
                         <span>{`${item.price}$`}</span>
                     </div>
-                    <button onClick={() => {removeFromCart(itemId)}}>Remove from Cart</button>
+                    <button 
+                        onClick={() => {
+                            removeFromCart(itemId)
+                        }}
+                    >Remove from Cart</button>
                 </div>
             );
         })
