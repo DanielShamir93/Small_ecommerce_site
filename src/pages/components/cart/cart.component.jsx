@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { decrementAction } from '../../../store/actions/actions.js';
+import './cart.styles.scss';
 
 export default function Cart() {
 
@@ -36,7 +37,7 @@ export default function Cart() {
             let itemId = itemEntries[0];
             let item = itemEntries[1];
             return (
-                <div key={itemId}>
+                <div className="item" key={itemId}>
                     <img src={item.image} width="200" alt="item-image" />
                     <div>
                         <span>{item.title}</span>
@@ -53,8 +54,10 @@ export default function Cart() {
     }
 
     return (
-        <div>
-            {renderCartItems()}
+        <div className="Cart-container">
+            <div className="cart">
+                {renderCartItems()}
+            </div>
         </div>
     );
 
