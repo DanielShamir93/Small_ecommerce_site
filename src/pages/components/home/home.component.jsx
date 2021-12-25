@@ -1,9 +1,11 @@
+import './home.styles.scss';
+
 export default function Home() {
 
-    
     return (
-        <div>
-            <h1>Welcome Home</h1>
+        <div className="Home">
+            <h2>Welcome To My Small e-commerce website</h2>
+            <h1>Enjoy Shopping!!</h1>
         </div>
     );
 
