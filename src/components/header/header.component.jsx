@@ -24,7 +24,7 @@ export default function Header() {
             }
         }
         dispatch(setAction(counter));
-    }, [])
+    })
 
     return (
         <div className="Header">
@@ -48,5 +48,4 @@ export default function Header() {
             </div>
         </div>
     );
-
 }
