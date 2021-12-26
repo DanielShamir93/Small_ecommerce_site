@@ -38,7 +38,7 @@ export default function Cart() {
             let item = itemEntries[1];
             return (
                 <div className="item" key={itemId}>
-                    <img className="item-image" src={item.image} alt="item-image" />
+                    <img className="item-image" src={item.image} alt="item" />
                     <div>
                         <span>{item.title}</span>
                         <span>{`${item.price}$`}</span>

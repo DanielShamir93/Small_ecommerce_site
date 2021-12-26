@@ -14,7 +14,7 @@ export default function ViewItem() {
 
     useEffect(() => {
         getItem();
-    }, [])
+    })
 
     const getItem = async () => {
         try{
@@ -36,7 +36,7 @@ export default function ViewItem() {
     const renderItem = () => {
         return (
             <div className="item">
-                <img className="item-image" src={item.image} alt="item-image" />
+                <img className="item-image" src={item.image} alt="item" />
                 <h2 className="item-title">{item.title}</h2>
                 <p className="item-description">{item.description}</p>
                 <span className="item-price">{`${item.price}$`}</span>

@@ -1,6 +1,6 @@
 import './navbarButton.styles.scss';
 
-export default function({ term, reactIcon }) {
+export default function NavbarButton({ term, reactIcon }) {
 
     return (
         <div>
